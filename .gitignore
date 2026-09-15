@@ -1,0 +1,6 @@
+# Task
+.task/
+
+# Typst output
+slides.pdf
+*.pdf

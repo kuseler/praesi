@@ -1,0 +1,3 @@
+- screenshots
+- Kollaboratives im Vordergrund
+- immer Wortdefinition (kowalski) abwechseln mit Inhalt (git) (erklären mit Farbe) 

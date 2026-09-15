@@ -1,0 +1,37 @@
+version: '3'
+
+vars:
+  ENTRY: slides.typ
+  OUTPUT: slides.pdf
+
+tasks:
+  default:
+    cmds:
+      - task: build
+
+  build:
+    desc: Präsentation (Typst -> PDF) kompilieren
+    cmds:
+      - typst compile {{.ENTRY}} {{.OUTPUT}}
+    sources:
+      - '{{.ENTRY}}'
+      - '**/*.typ'
+      - 'assets/**/*'
+    generates:
+      - '{{.OUTPUT}}'
+
+  watch:
+    desc: Live-Kompilierung bei Dateiänderungen
+    cmds:
+      - typst watch {{.ENTRY}} {{.OUTPUT}}
+
+  open:
+    desc: Erzeugtes PDF im Standardbetrachter öffnen
+    deps: [build]
+    cmds:
+      - xdg-open {{.OUTPUT}}
+
+  clean:
+    desc: Erzeugte PDF-Dateien aufräumen
+    cmds:
+      - rm -f {{.OUTPUT}}
